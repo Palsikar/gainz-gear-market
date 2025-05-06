@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
@@ -52,8 +51,8 @@ export default function Register() {
         <div className="max-w-md mx-auto">
           <div className="bg-white p-8 rounded-lg shadow">
             <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold">Create an Account</h1>
-              <p className="text-gray-600">Join us and start shopping</p>
+              <h1 className="text-2xl font-bold">Join MuscleBlaze</h1>
+              <p className="text-gray-600">Create an account to start shopping</p>
             </div>
             
             <form onSubmit={handleSubmit}>

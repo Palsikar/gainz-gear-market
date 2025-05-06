@@ -37,7 +37,7 @@ export default function Login() {
         <div className="max-w-md mx-auto">
           <div className="bg-white p-8 rounded-lg shadow">
             <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold">Welcome Back</h1>
+              <h1 className="text-2xl font-bold">Welcome to MuscleBlaze</h1>
               <p className="text-gray-600">Sign in to your account</p>
             </div>
             

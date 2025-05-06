@@ -1,6 +1,14 @@
 
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
+import { 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  User as FirebaseUser
+} from 'firebase/auth';
+import { auth } from '@/config/firebase';
 
 interface User {
   id: string;
@@ -22,110 +30,89 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const { toast } = useToast();
 
-  // Check if user is already logged in from localStorage
+  // Listen to Firebase auth state changes
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.error("Failed to parse stored user:", error);
-        localStorage.removeItem('user');
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        // Convert Firebase user to our app user structure
+        const appUser: User = {
+          id: firebaseUser.uid,
+          name: firebaseUser.displayName || firebaseUser.email?.split('@')[0] || 'User',
+          email: firebaseUser.email || '',
+        };
+        setUser(appUser);
+      } else {
+        setUser(null);
       }
-    }
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
 
-  // Mock login function
+  // Firebase login function
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      // In a real app, this would make an API call to your authentication service
-      if (email && password) {
-        // Mock successful login
-        const mockUser = {
-          id: '1',
-          name: email.split('@')[0], // Use part of the email as the name for demo
-          email: email,
-        };
-        
-        setUser(mockUser);
-        localStorage.setItem('user', JSON.stringify(mockUser));
-        
-        toast({
-          title: "Login Successful",
-          description: "Welcome back!",
-        });
-        
-        return true;
-      }
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       
+      // Firebase auth state listener will set the user
       toast({
-        variant: "destructive",
-        title: "Login Failed",
-        description: "Invalid email or password",
+        title: "Login Successful",
+        description: "Welcome back!",
       });
       
-      return false;
-    } catch (error) {
+      return true;
+    } catch (error: any) {
       console.error("Login error:", error);
       toast({
         variant: "destructive",
         title: "Login Failed",
-        description: "An unexpected error occurred",
+        description: error.message || "Invalid email or password",
       });
       
       return false;
     }
   };
 
-  // Mock register function
+  // Firebase register function
   const register = async (name: string, email: string, password: string): Promise<boolean> => {
     try {
-      // In a real app, this would make an API call to your authentication service
-      if (name && email && password) {
-        // Mock successful registration
-        const mockUser = {
-          id: Math.random().toString(36).substring(2, 9),
-          name,
-          email,
-        };
-        
-        setUser(mockUser);
-        localStorage.setItem('user', JSON.stringify(mockUser));
-        
-        toast({
-          title: "Registration Successful",
-          description: "Your account has been created!",
-        });
-        
-        return true;
-      }
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       
+      // Firebase auth state listener will set the user
       toast({
-        variant: "destructive",
-        title: "Registration Failed",
-        description: "Please fill in all required fields",
+        title: "Registration Successful",
+        description: "Your account has been created!",
       });
       
-      return false;
-    } catch (error) {
+      return true;
+    } catch (error: any) {
       console.error("Registration error:", error);
       toast({
         variant: "destructive",
         title: "Registration Failed",
-        description: "An unexpected error occurred",
+        description: error.message || "An unexpected error occurred",
       });
       
       return false;
     }
   };
 
-  // Logout function
+  // Firebase logout function
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-    toast({
-      title: "Logged Out",
-      description: "You have been successfully logged out",
+    signOut(auth).then(() => {
+      // Firebase auth state listener will handle the user state
+      toast({
+        title: "Logged Out",
+        description: "You have been successfully logged out",
+      });
+    }).catch((error) => {
+      console.error("Logout error:", error);
+      toast({
+        variant: "destructive",
+        title: "Logout Failed",
+        description: "An unexpected error occurred during logout",
+      });
     });
   };
 
