@@ -62,115 +62,133 @@ export default function Products() {
     setPriceRange([0, 100]);
   };
   
+  // Background gradients
+  const gradientBg = "bg-gradient-to-r from-fuchsia-600 to-violet-800";
+  
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">All Products</h1>
-        
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Mobile Filter Toggle */}
-          <div className="md:hidden mb-4">
-            <Button 
-              onClick={() => setShowFilters(!showFilters)} 
-              variant="outline" 
-              className="w-full flex justify-between items-center"
-            >
-              <span className="flex items-center">
-                <SlidersHorizontal className="h-4 w-4 mr-2" />
-                Filters
-              </span>
-              {showFilters ? <X className="h-4 w-4" /> : null}
-            </Button>
+      <div className="min-h-screen bg-gradient-to-b from-violet-50 to-purple-100">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-red-500">
+              Premium Supplements
+            </h1>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Quality supplements to help you achieve your fitness goals
+            </p>
           </div>
           
-          {/* Sidebar Filters */}
-          <div className={`md:w-1/4 ${showFilters ? 'block' : 'hidden md:block'}`}>
-            <div className="bg-white p-4 rounded-lg shadow-sm sticky top-20">
-              <div className="mb-6">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="font-semibold text-lg">Filters</h2>
-                  <button 
-                    onClick={clearFilters}
-                    className="text-sm text-supplement-purple hover:underline"
-                  >
-                    Clear all
-                  </button>
-                </div>
-                
-                {/* Search */}
-                <div className="relative mb-6">
-                  <input
-                    type="text"
-                    placeholder="Search products..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full p-2 pl-9 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-supplement-purple"
-                  />
-                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
-                </div>
-                
-                {/* Categories */}
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Mobile Filter Toggle */}
+            <div className="md:hidden mb-4">
+              <Button 
+                onClick={() => setShowFilters(!showFilters)} 
+                variant="outline" 
+                className={`w-full flex justify-between items-center border-2 border-purple-300 ${showFilters ? 'bg-purple-100' : ''}`}
+              >
+                <span className="flex items-center">
+                  <SlidersHorizontal className="h-4 w-4 mr-2" />
+                  Filters
+                </span>
+                {showFilters ? <X className="h-4 w-4" /> : null}
+              </Button>
+            </div>
+            
+            {/* Sidebar Filters */}
+            <div className={`md:w-1/4 ${showFilters ? 'block' : 'hidden md:block'}`}>
+              <div className="bg-white p-6 rounded-2xl shadow-md sticky top-20 border-2 border-purple-200">
                 <div className="mb-6">
-                  <h3 className="font-medium mb-3">Categories</h3>
-                  <div className="space-y-2">
-                    {categories.map(category => (
-                      <div key={category.id} className="flex items-center">
-                        <Checkbox
-                          id={`category-${category.id}`}
-                          checked={selectedCategories.includes(category.id)}
-                          onCheckedChange={() => toggleCategory(category.id)}
-                        />
-                        <label 
-                          htmlFor={`category-${category.id}`}
-                          className="ml-2 text-sm cursor-pointer"
-                        >
-                          {category.name}
-                        </label>
-                      </div>
-                    ))}
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="font-bold text-xl text-gray-800">Filters</h2>
+                    <button 
+                      onClick={clearFilters}
+                      className="text-sm text-purple-600 hover:text-purple-800 font-medium hover:underline"
+                    >
+                      Clear all
+                    </button>
                   </div>
-                </div>
-                
-                {/* Price Range */}
-                <div>
-                  <h3 className="font-medium mb-3">Price Range</h3>
-                  <Slider
-                    defaultValue={priceRange}
-                    max={100}
-                    step={1}
-                    value={priceRange}
-                    onValueChange={setPriceRange}
-                    className="mb-4"
-                  />
-                  <div className="flex justify-between text-sm">
-                    <span>${priceRange[0].toFixed(2)}</span>
-                    <span>${priceRange[1] === 100 ? maxPrice.toFixed(2) : priceRange[1].toFixed(2)}</span>
+                  
+                  {/* Search */}
+                  <div className="relative mb-6">
+                    <input
+                      type="text"
+                      placeholder="Search products..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full p-3 pl-10 border-2 border-purple-200 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
+                    />
+                    <Search className="absolute left-3 top-3.5 h-4 w-4 text-gray-400" />
+                  </div>
+                  
+                  {/* Categories */}
+                  <div className="mb-6">
+                    <h3 className="font-semibold text-lg mb-3 text-gray-800">Categories</h3>
+                    <div className="space-y-3">
+                      {categories.map(category => (
+                        <div key={category.id} className="flex items-center">
+                          <Checkbox
+                            id={`category-${category.id}`}
+                            checked={selectedCategories.includes(category.id)}
+                            onCheckedChange={() => toggleCategory(category.id)}
+                            className="border-2 border-purple-300 text-purple-600"
+                          />
+                          <label 
+                            htmlFor={`category-${category.id}`}
+                            className="ml-3 text-gray-700 cursor-pointer hover:text-purple-700 transition-colors"
+                          >
+                            {category.name}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Price Range */}
+                  <div>
+                    <h3 className="font-semibold text-lg mb-3 text-gray-800">Price Range</h3>
+                    <Slider
+                      defaultValue={priceRange}
+                      max={100}
+                      step={1}
+                      value={priceRange}
+                      onValueChange={setPriceRange}
+                      className="mb-6"
+                    />
+                    <div className="flex justify-between text-sm font-medium">
+                      <span className="bg-purple-100 px-3 py-1 rounded-lg text-purple-800">${priceRange[0].toFixed(2)}</span>
+                      <span className="bg-purple-100 px-3 py-1 rounded-lg text-purple-800">
+                        ${priceRange[1] === 100 ? maxPrice.toFixed(2) : priceRange[1].toFixed(2)}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          {/* Product Grid */}
-          <div className="md:w-3/4">
-            {filteredProducts.length > 0 ? (
-              <>
-                <p className="mb-4 text-gray-600">{filteredProducts.length} products found</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredProducts.map(product => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
+            
+            {/* Product Grid */}
+            <div className="md:w-3/4">
+              {filteredProducts.length > 0 ? (
+                <>
+                  <p className="mb-6 text-gray-600 font-medium">{filteredProducts.length} products found</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {filteredProducts.map(product => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="text-center py-16 bg-white rounded-2xl shadow-md">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-800">No products found</h3>
+                  <p className="text-gray-600 mb-8">Try changing your filters or search query</p>
+                  <Button 
+                    onClick={clearFilters}
+                    className={gradientBg}
+                  >
+                    Clear all filters
+                  </Button>
                 </div>
-              </>
-            ) : (
-              <div className="text-center py-12">
-                <h3 className="text-xl font-semibold mb-2">No products found</h3>
-                <p className="text-gray-600 mb-6">Try changing your filters or search query</p>
-                <Button onClick={clearFilters}>
-                  Clear all filters
-                </Button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
