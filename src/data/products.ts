@@ -13,6 +13,8 @@ export const products: Product[] = [
     reviews: 342,
     inStock: true,
     featured: true,
+    new: false,
+    stock: 75,
     flavors: ["Chocolate", "Vanilla", "Strawberry", "Cookies & Cream"],
     sizes: ["2lb", "5lb", "10lb"],
     nutritionInfo: {
@@ -37,6 +39,8 @@ export const products: Product[] = [
     reviews: 275,
     inStock: true,
     featured: true,
+    new: true,
+    stock: 50,
     flavors: ["Fruit Punch", "Blue Raspberry", "Watermelon", "Orange"],
     sizes: ["30 servings", "60 servings"],
     nutritionInfo: {
@@ -57,6 +61,8 @@ export const products: Product[] = [
     reviews: 189,
     inStock: true,
     featured: false,
+    new: false,
+    stock: 100,
     sizes: ["60 tablets", "120 tablets"],
     nutritionInfo: {
       servingSize: "1 tablet",
@@ -75,6 +81,8 @@ export const products: Product[] = [
     reviews: 213,
     inStock: true,
     featured: true,
+    new: false,
+    stock: 60,
     flavors: ["Chocolate", "Vanilla", "Banana"],
     sizes: ["6lb", "12lb"],
     nutritionInfo: {
@@ -99,6 +107,8 @@ export const products: Product[] = [
     reviews: 157,
     inStock: true,
     featured: false,
+    new: false,
+    stock: 85,
     flavors: ["Lemon-Lime", "Cherry", "Unflavored"],
     sizes: ["30 servings", "60 servings"],
     nutritionInfo: {
@@ -119,6 +129,8 @@ export const products: Product[] = [
     reviews: 423,
     inStock: true,
     featured: false,
+    new: false,
+    stock: 120,
     sizes: ["300g", "500g", "1000g"],
     nutritionInfo: {
       servingSize: "5g",
@@ -138,6 +150,8 @@ export const products: Product[] = [
     reviews: 178,
     inStock: true,
     featured: false,
+    new: true,
+    stock: 40,
     flavors: ["Chocolate", "Vanilla", "Berry"],
     sizes: ["2lb", "4lb"],
     nutritionInfo: {
@@ -162,6 +176,8 @@ export const products: Product[] = [
     reviews: 134,
     inStock: true,
     featured: false,
+    new: false,
+    stock: 95,
     sizes: ["90 capsules", "180 capsules"],
     nutritionInfo: {
       servingSize: "3 capsules",
