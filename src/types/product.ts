@@ -7,9 +7,11 @@ export interface Product {
   image: string;
   category: string;
   rating: number;
-  reviews: number;
-  inStock: boolean;
   featured: boolean;
+  new: boolean;
+  stock: number;
+  reviews?: number;
+  inStock?: boolean;
   flavors?: string[];
   sizes?: string[];
   nutritionInfo?: {
