@@ -98,3 +98,52 @@
 .product-card {
   @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
 }
+
+/* Custom text gradient */
+.text-gradient {
+  @apply bg-gradient-to-r from-purple-300 via-pink-300 to-red-300 bg-clip-text text-transparent;
+}
+
+/* Animation classes */
+@keyframes pulse {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Custom shadow effects */
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+.shadow-glow:hover {
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
+}
