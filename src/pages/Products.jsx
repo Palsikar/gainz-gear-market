@@ -6,11 +6,10 @@ import { products, categories } from '@/data/products';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
-import { Search, SlidersHorizontal, X } from 'lucide-react';
+import { SlidersHorizontal, X } from 'lucide-react';
 
 export default function Products() {
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [showFilters, setShowFilters] = useState(false);
@@ -21,15 +20,6 @@ export default function Products() {
   // Filter products when criteria changes
   useEffect(() => {
     let result = [...products];
-    
-    // Filter by search query
-    if (searchQuery) {
-      result = result.filter(product => 
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
     
     // Filter by selected categories
     if (selectedCategories.length > 0) {
@@ -43,7 +33,7 @@ export default function Products() {
     );
     
     setFilteredProducts(result);
-  }, [searchQuery, selectedCategories, priceRange, maxPrice]);
+  }, [selectedCategories, priceRange, maxPrice]);
   
   // Toggle category selection
   const toggleCategory = (category) => {
@@ -56,7 +46,6 @@ export default function Products() {
   
   // Clear all filters
   const clearFilters = () => {
-    setSearchQuery('');
     setSelectedCategories([]);
     setPriceRange([0, 100]);
   };
@@ -102,18 +91,6 @@ export default function Products() {
                     >
                       Clear all
                     </button>
-                  </div>
-                  
-                  {/* Search */}
-                  <div className="relative mb-6">
-                    <input
-                      type="text"
-                      placeholder="Search products..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full p-3 pl-10 bg-gray-900/80 border-2 border-purple-500/30 focus:border-purple-500/70 text-white rounded-xl focus:outline-none focus:ring-1 focus:ring-purple-500 transition-colors"
-                    />
-                    <Search className="absolute left-3 top-3.5 h-4 w-4 text-purple-400" />
                   </div>
                   
                   {/* Categories */}
