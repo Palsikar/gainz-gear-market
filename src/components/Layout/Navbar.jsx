@@ -40,9 +40,7 @@ export default function Navbar() {
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
-              <div className="flex items-center gap-4">
-                <Button variant="ghost" onClick={logout} className="text-white hover:bg-purple-700/30">Logout</Button>
-              </div>
+              <Button variant="ghost" onClick={logout} className="text-white hover:bg-purple-700/30">Logout</Button>
             ) : (
               <div className="flex items-center gap-2">
                 <Link to="/login">
