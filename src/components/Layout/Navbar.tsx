@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, Menu, X, User } from 'lucide-react';
@@ -33,10 +32,10 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="font-medium text-gray-600 hover:text-supplement-purple">Home</Link>
-            <Link to="/products" className="font-medium text-gray-600 hover:text-supplement-purple">Shop</Link>
-            <Link to="/categories" className="font-medium text-gray-600 hover:text-supplement-purple">Categories</Link>
-            <Link to="/about" className="font-medium text-gray-600 hover:text-supplement-purple">About</Link>
+            <Link to="/" className="font-medium text-gray-800 hover:text-supplement-purple transition-colors">Home</Link>
+            <Link to="/products" className="font-medium text-gray-800 hover:text-supplement-purple transition-colors">Shop</Link>
+            <Link to="/categories" className="font-medium text-gray-800 hover:text-supplement-purple transition-colors">Categories</Link>
+            <Link to="/about" className="font-medium text-gray-800 hover:text-supplement-purple transition-colors">About</Link>
           </div>
 
           {/* Action Buttons */}
@@ -45,23 +44,23 @@ export default function Navbar() {
               <div className="flex items-center gap-4">
                 <Link to="/account">
                   <Button variant="ghost" size="icon">
-                    <User className="h-5 w-5" />
+                    <User className="h-5 w-5 text-gray-800" />
                   </Button>
                 </Link>
-                <Button variant="ghost" onClick={logout}>Logout</Button>
+                <Button variant="ghost" onClick={logout} className="text-gray-800">Logout</Button>
               </div>
             ) : (
               <div className="flex items-center gap-2">
                 <Link to="/login">
-                  <Button variant="ghost">Login</Button>
+                  <Button variant="ghost" className="text-gray-800">Login</Button>
                 </Link>
                 <Link to="/register">
-                  <Button>Sign Up</Button>
+                  <Button className="bg-supplement-purple text-white hover:bg-supplement-purple/80">Sign Up</Button>
                 </Link>
               </div>
             )}
             <Link to="/cart" className="relative">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-gray-800">
                 <ShoppingCart className="h-5 w-5" />
                 {cartItems.length > 0 && (
                   <span className="absolute -top-1 -right-1 bg-supplement-purple text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
@@ -75,7 +74,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-2">
             <Link to="/cart" className="relative">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-gray-800">
                 <ShoppingCart className="h-5 w-5" />
                 {cartItems.length > 0 && (
                   <span className="absolute -top-1 -right-1 bg-supplement-purple text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
@@ -90,9 +89,9 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 text-gray-800" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5 text-gray-800" />
               )}
             </Button>
           </div>
@@ -103,26 +102,26 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-white p-4 shadow-lg animate-fade-in">
           <div className="flex flex-col space-y-3">
-            <Link to="/" className="p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/" className="p-2 hover:bg-gray-100 rounded text-gray-800 font-medium" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link to="/products" className="p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/products" className="p-2 hover:bg-gray-100 rounded text-gray-800 font-medium" onClick={() => setIsMenuOpen(false)}>
               Shop
             </Link>
-            <Link to="/categories" className="p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/categories" className="p-2 hover:bg-gray-100 rounded text-gray-800 font-medium" onClick={() => setIsMenuOpen(false)}>
               Categories
             </Link>
-            <Link to="/about" className="p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/about" className="p-2 hover:bg-gray-100 rounded text-gray-800 font-medium" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
             <div className="border-t border-gray-200 pt-2">
               {isAuthenticated ? (
                 <>
-                  <Link to="/account" className="block p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
+                  <Link to="/account" className="block p-2 hover:bg-gray-100 rounded text-gray-800 font-medium" onClick={() => setIsMenuOpen(false)}>
                     My Account
                   </Link>
                   <button 
-                    className="w-full text-left p-2 hover:bg-gray-100 rounded"
+                    className="w-full text-left p-2 hover:bg-gray-100 rounded text-gray-800"
                     onClick={() => {
                       logout();
                       setIsMenuOpen(false);
@@ -133,10 +132,10 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
-                  <Link to="/login" className="block p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
+                  <Link to="/login" className="block p-2 hover:bg-gray-100 rounded text-gray-800 font-medium" onClick={() => setIsMenuOpen(false)}>
                     Login
                   </Link>
-                  <Link to="/register" className="block p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
+                  <Link to="/register" className="block p-2 hover:bg-gray-100 rounded text-gray-800 font-medium" onClick={() => setIsMenuOpen(false)}>
                     Sign Up
                   </Link>
                 </>
