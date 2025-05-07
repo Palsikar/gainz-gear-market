@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Menu, X, User } from 'lucide-react';
+import { ShoppingCart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { useCart } from '@/hooks/useCart';
@@ -41,11 +41,6 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
               <div className="flex items-center gap-4">
-                <Link to="/account">
-                  <Button variant="ghost" size="icon" className="text-white hover:bg-purple-700/30">
-                    <User className="h-5 w-5" />
-                  </Button>
-                </Link>
                 <Button variant="ghost" onClick={logout} className="text-white hover:bg-purple-700/30">Logout</Button>
               </div>
             ) : (
@@ -111,9 +106,6 @@ export default function Navbar() {
             <div className="border-t border-gray-700 pt-2">
               {isAuthenticated ? (
                 <>
-                  <Link to="/account" className="block p-2 hover:bg-purple-700/30 rounded text-white" onClick={() => setIsMenuOpen(false)}>
-                    My Account
-                  </Link>
                   <button 
                     className="w-full text-left p-2 hover:bg-purple-700/30 rounded text-white"
                     onClick={() => {

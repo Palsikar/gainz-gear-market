@@ -15,7 +15,7 @@ export default function Home() {
               FUEL YOUR POTENTIAL
             </h1>
             <div className="h-2 w-32 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full mb-8 animate-pulse"></div>
-            <p className="text-2xl md:text-3xl mb-12 font-bold text-white leading-relaxed max-w-3xl text-shadow-glow">
+            <p className="text-3xl md:text-4xl mb-12 font-extrabold text-shadow-glow animate-pulse bg-gradient-to-r from-blue-400 via-pink-300 to-purple-400 bg-clip-text text-transparent">
               "Transform your body, transform your life"
             </p>
             <Link 

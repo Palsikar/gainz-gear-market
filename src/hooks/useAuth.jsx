@@ -1,33 +1,18 @@
 
-import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
-  User as FirebaseUser
+  onAuthStateChanged
 } from 'firebase/auth';
 import { auth } from '@/config/firebase';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-}
+const AuthContext = createContext(undefined);
 
-interface AuthContextType {
-  user: User | null;
-  isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
-  register: (name: string, email: string, password: string) => Promise<boolean>;
-  logout: () => void;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
   const { toast } = useToast();
 
   // Listen to Firebase auth state changes
@@ -35,7 +20,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         // Convert Firebase user to our app user structure
-        const appUser: User = {
+        const appUser = {
           id: firebaseUser.uid,
           name: firebaseUser.displayName || firebaseUser.email?.split('@')[0] || 'User',
           email: firebaseUser.email || '',
@@ -51,9 +36,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   // Firebase login function
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email, password) => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       
       // Firebase auth state listener will set the user
       toast({
@@ -62,7 +47,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
       
       return true;
-    } catch (error: any) {
+    } catch (error) {
       console.error("Login error:", error);
       toast({
         variant: "destructive",
@@ -75,9 +60,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   // Firebase register function
-  const register = async (name: string, email: string, password: string): Promise<boolean> => {
+  const register = async (name, email, password) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       
       // Firebase auth state listener will set the user
       toast({
@@ -86,7 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
       
       return true;
-    } catch (error: any) {
+    } catch (error) {
       console.error("Registration error:", error);
       toast({
         variant: "destructive",
