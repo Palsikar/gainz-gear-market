@@ -35,8 +35,6 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="font-medium text-gray-600 hover:text-supplement-purple">Home</Link>
             <Link to="/products" className="font-medium text-gray-600 hover:text-supplement-purple">Shop</Link>
-            <Link to="/categories" className="font-medium text-gray-600 hover:text-supplement-purple">Categories</Link>
-            <Link to="/about" className="font-medium text-gray-600 hover:text-supplement-purple">About</Link>
           </div>
 
           {/* Action Buttons */}
@@ -108,12 +106,6 @@ export default function Navbar() {
             </Link>
             <Link to="/products" className="p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
               Shop
-            </Link>
-            <Link to="/categories" className="p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
-              Categories
-            </Link>
-            <Link to="/about" className="p-2 hover:bg-gray-100 rounded" onClick={() => setIsMenuOpen(false)}>
-              About
             </Link>
             <div className="border-t border-gray-200 pt-2">
               {isAuthenticated ? (
