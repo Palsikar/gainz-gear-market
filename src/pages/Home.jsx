@@ -7,21 +7,21 @@ import { ArrowRight } from 'lucide-react';
 export default function Home() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-100 to-purple-100 py-20">
+      {/* Hero Section with new background color */}
+      <section className="bg-gradient-to-r from-purple-800 to-indigo-900 py-20">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-6xl md:text-7xl font-extrabold mb-6 text-black animate-fade-in">
+            <h1 className="text-6xl md:text-7xl font-extrabold mb-6 text-white animate-fade-in">
               FUEL YOUR POTENTIAL
             </h1>
             
-            <p className="text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-purple-200 mb-10 max-w-2xl mx-auto">
               Premium supplements to maximize your performance and recovery
             </p>
             
             <Link 
               to="/products" 
-              className="inline-flex items-center bg-black text-white font-bold py-4 px-10 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+              className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-10 rounded-none transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
             >
               Shop Collection
               <ArrowRight className="ml-2 h-6 w-6" />
@@ -31,13 +31,13 @@ export default function Home() {
       </section>
       
       {/* Featured Products */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-r from-indigo-100 to-purple-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Featured Products</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Product 1 */}
-            <div className="bg-gradient-to-b from-blue-50 to-purple-50 rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div className="bg-white rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               <img 
                 src="/lovable-uploads/91fbdc3d-c803-419f-b13f-3f5e46b9edb4.png" 
                 alt="BCAA Pro" 
@@ -49,7 +49,7 @@ export default function Home() {
             </div>
             
             {/* Product 2 */}
-            <div className="bg-gradient-to-b from-green-50 to-blue-50 rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div className="bg-white rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               <img 
                 src="/lovable-uploads/ca3593da-8420-46a5-90b2-3300211184f4.png" 
                 alt="Creatine Monohydrate" 
@@ -61,7 +61,7 @@ export default function Home() {
             </div>
             
             {/* Product 3 */}
-            <div className="bg-gradient-to-b from-yellow-50 to-orange-50 rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div className="bg-white rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               <img 
                 src="/lovable-uploads/3b0e53a4-9404-4026-89e3-bab30199d7df.png" 
                 alt="Mass Gainer" 
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
             
             {/* Product 4 */}
-            <div className="bg-gradient-to-b from-red-50 to-pink-50 rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div className="bg-white rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               <img 
                 src="/lovable-uploads/c552a74b-2ca7-4f1d-ba36-4043c58fcdcf.png" 
                 alt="Pre-Workout" 
@@ -88,9 +88,9 @@ export default function Home() {
       </section>
       
       {/* Best Sellers */}
-      <section className="py-16 bg-gradient-to-r from-purple-50 to-blue-50">
+      <section className="py-16 bg-gradient-to-r from-purple-900 to-indigo-900 text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Best Sellers</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">Best Sellers</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Best Seller 1 */}
@@ -154,10 +154,10 @@ export default function Home() {
       </section>
       
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-supplement-purple to-supplement-blue text-white">
+      <section className="py-16 bg-gradient-to-r from-yellow-400 to-orange-500 text-black">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Transform?</h2>
-          <p className="text-xl mb-10 max-w-2xl mx-auto text-white">
+          <p className="text-xl mb-10 max-w-2xl mx-auto text-gray-800">
             Join thousands of satisfied customers who have transformed their fitness journey with our premium supplements.
           </p>
           <Link 
