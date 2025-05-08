@@ -25,18 +25,12 @@ export default function ProductCard({ product }) {
     'bg-gradient-to-r from-yellow-400 to-orange-500',
     'bg-gradient-to-r from-green-400 to-emerald-500',
     'bg-gradient-to-r from-purple-600 to-pink-500',
-    'bg-gradient-to-r from-red-500 to-orange-500',
-    'bg-gradient-to-r from-teal-400 to-cyan-500',
-    'bg-gradient-to-r from-fuchsia-600 to-pink-600',
-    'bg-gradient-to-r from-amber-500 to-yellow-400',
-    'bg-gradient-to-r from-violet-600 to-indigo-600',
-    'bg-gradient-to-r from-rose-500 to-pink-500',
   ];
   
   const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
 
   return (
-    <div className="product-card bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+    <div className="product-card bg-white rounded-2xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
       <div className={`${randomGradient} p-2 rounded-t-2xl`}>
         <HoverCard>
           <HoverCardTrigger asChild>
@@ -45,22 +39,22 @@ export default function ProductCard({ product }) {
                 <img 
                   src={product.image} 
                   alt={product.name} 
-                  className="w-full h-full object-contain transition-all duration-500 hover:scale-125 p-4"
+                  className="w-full h-full object-contain transition-transform hover:scale-110 p-4"
                 />
                 {product.new && (
-                  <span className="absolute top-2 right-2 bg-red-500 text-white text-sm px-3 py-1 rounded-full font-bold animate-pulse">
+                  <span className="absolute top-2 right-2 bg-red-500 text-white text-sm px-3 py-1 rounded-full font-bold">
                     NEW
                   </span>
                 )}
               </div>
             </Link>
           </HoverCardTrigger>
-          <HoverCardContent className="w-80 bg-gradient-to-r from-gray-900 to-gray-800 text-white border-0 shadow-xl">
+          <HoverCardContent className="w-80 bg-white border border-gray-200 text-gray-800">
             <div className="space-y-2">
               <h4 className="text-lg font-semibold">{product.name}</h4>
-              <p className="text-sm text-gray-300">{product.description}</p>
+              <p className="text-sm text-gray-600">{product.description}</p>
               {product.nutritionInfo && (
-                <div className="text-xs text-gray-400 mt-2 p-2 bg-black/30 rounded">
+                <div className="text-xs text-gray-500 mt-2 p-2 bg-gray-100 rounded">
                   <p>Serving size: {product.nutritionInfo.servingSize}</p>
                   {product.nutritionInfo.protein && <p>Protein: {product.nutritionInfo.protein}</p>}
                   {product.nutritionInfo.calories && <p>Calories: {product.nutritionInfo.calories}</p>}
@@ -73,7 +67,7 @@ export default function ProductCard({ product }) {
       
       <div className="p-5 space-y-3">
         <div className="flex items-center justify-between">
-          <span className="inline-block px-3 py-1 bg-gradient-to-r from-gray-800 to-gray-700 text-white rounded-full text-xs font-medium capitalize">
+          <span className="inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium capitalize">
             {product.category.replace('-', ' ')}
           </span>
           <div className="flex items-center bg-yellow-100 px-2 py-1 rounded-full">
@@ -92,7 +86,7 @@ export default function ProductCard({ product }) {
           <span className="font-extrabold text-2xl text-gray-800">${product.price.toFixed(2)}</span>
           <Button 
             onClick={handleAddToCart}
-            className={`rounded-full ${randomGradient} hover:opacity-90 transition-all duration-300 hover:shadow-lg text-white transform hover:scale-105`}
+            className={`rounded-full ${randomGradient} hover:opacity-90 transition-opacity text-white`}
           >
             <ShoppingCart className="h-5 w-5 mr-1" />
             Add to cart

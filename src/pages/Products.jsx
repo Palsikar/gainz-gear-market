@@ -52,13 +52,13 @@ export default function Products() {
   
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-b from-purple-900 via-indigo-900 to-purple-900 text-white">
+      <div className="min-h-screen bg-gradient-to-b from-purple-100 to-white text-gray-800">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 animate-fade-in">
+            <h1 className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 animate-fade-in">
               Premium Supplements
             </h1>
-            <p className="text-xl text-purple-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto">
               Quality supplements scientifically formulated to help you achieve your fitness goals
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function Products() {
               <Button 
                 onClick={() => setShowFilters(!showFilters)} 
                 variant="outline" 
-                className={`w-full flex justify-between items-center border-2 border-purple-500 bg-gray-800/50 text-white ${showFilters ? 'bg-purple-900/50' : ''}`}
+                className={`w-full flex justify-between items-center border-2 border-purple-500 bg-white text-gray-800 ${showFilters ? 'bg-purple-100' : ''}`}
               >
                 <span className="flex items-center">
                   <SlidersHorizontal className="h-4 w-4 mr-2" />
@@ -81,13 +81,13 @@ export default function Products() {
             
             {/* Sidebar Filters */}
             <div className={`md:w-1/4 ${showFilters ? 'block' : 'hidden md:block'}`}>
-              <div className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-purple-500/20 sticky top-20">
+              <div className="bg-white p-6 rounded-2xl shadow-xl border border-purple-200 sticky top-20">
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-4">
-                    <h2 className="font-bold text-xl text-white">Filters</h2>
+                    <h2 className="font-bold text-xl text-gray-800">Filters</h2>
                     <button 
                       onClick={clearFilters}
-                      className="text-sm text-purple-400 hover:text-purple-300 font-medium hover:underline"
+                      className="text-sm text-purple-600 hover:text-purple-800 font-medium hover:underline"
                     >
                       Clear all
                     </button>
@@ -95,7 +95,7 @@ export default function Products() {
                   
                   {/* Categories */}
                   <div className="mb-6">
-                    <h3 className="font-semibold text-lg mb-3 text-white">Categories</h3>
+                    <h3 className="font-semibold text-lg mb-3 text-gray-800">Categories</h3>
                     <div className="space-y-3">
                       {categories.map(category => (
                         <div key={category.id} className="flex items-center">
@@ -103,11 +103,11 @@ export default function Products() {
                             id={`category-${category.id}`}
                             checked={selectedCategories.includes(category.id)}
                             onCheckedChange={() => toggleCategory(category.id)}
-                            className="border-2 border-purple-500/50 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600"
+                            className="border-2 border-purple-300 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600"
                           />
                           <label 
                             htmlFor={`category-${category.id}`}
-                            className="ml-3 text-gray-300 cursor-pointer hover:text-purple-300 transition-colors"
+                            className="ml-3 text-gray-700 cursor-pointer hover:text-purple-700 transition-colors"
                           >
                             {category.name}
                           </label>
@@ -118,7 +118,7 @@ export default function Products() {
                   
                   {/* Price Range */}
                   <div>
-                    <h3 className="font-semibold text-lg mb-3 text-white">Price Range</h3>
+                    <h3 className="font-semibold text-lg mb-3 text-gray-800">Price Range</h3>
                     <Slider
                       defaultValue={priceRange}
                       max={100}
@@ -128,8 +128,8 @@ export default function Products() {
                       className="mb-6"
                     />
                     <div className="flex justify-between text-sm font-medium">
-                      <span className="bg-purple-900/70 px-3 py-1 rounded-lg text-purple-200">${priceRange[0].toFixed(2)}</span>
-                      <span className="bg-purple-900/70 px-3 py-1 rounded-lg text-purple-200">
+                      <span className="bg-purple-100 px-3 py-1 rounded-lg text-purple-800">${priceRange[0].toFixed(2)}</span>
+                      <span className="bg-purple-100 px-3 py-1 rounded-lg text-purple-800">
                         ${priceRange[1] === 100 ? maxPrice.toFixed(2) : priceRange[1].toFixed(2)}
                       </span>
                     </div>
@@ -142,7 +142,7 @@ export default function Products() {
             <div className="md:w-3/4">
               {filteredProducts.length > 0 ? (
                 <>
-                  <p className="mb-6 text-purple-300 font-medium">{filteredProducts.length} products found</p>
+                  <p className="mb-6 text-gray-700 font-medium">{filteredProducts.length} products found</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredProducts.map(product => (
                       <ProductCard key={product.id} product={product} />
@@ -150,9 +150,9 @@ export default function Products() {
                   </div>
                 </>
               ) : (
-                <div className="text-center py-16 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-md border border-purple-500/20">
-                  <h3 className="text-2xl font-bold mb-3 text-white">No products found</h3>
-                  <p className="text-gray-400 mb-8">Try changing your filters or search query</p>
+                <div className="text-center py-16 bg-white rounded-2xl shadow-md border border-purple-200">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-800">No products found</h3>
+                  <p className="text-gray-600 mb-8">Try changing your filters or search query</p>
                   <Button 
                     onClick={clearFilters}
                     className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-0 text-white"
