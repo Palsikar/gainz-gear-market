@@ -6,7 +6,7 @@ export const products = [
     name: "Optimum Nutrition Creatine Powder",
     description: "100% pure creatine monohydrate for increased strength, power and muscle mass.",
     price: 29.99,
-    image: "/lovable-uploads/66e0a790-32be-49a5-9524-125bd1d92f3a.png",
+    image: "public/lovable-uploads/66e0a790-32be-49a5-9524-125bd1d92f3a.png",
     category: "creatine",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 423,
