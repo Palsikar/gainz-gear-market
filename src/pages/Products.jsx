@@ -52,14 +52,14 @@ export default function Products() {
   
   return (
     <Layout>
-      <div className="min-h-screen bg-green-900 text-white">
-        <div className="container mx-auto px-4 py-12">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-green-100 to-white animate-fade-in">
+      <div className="min-h-screen bg-gradient-to-b from-violet-50 to-purple-100">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-red-500">
               Premium Supplements
             </h1>
-            <p className="text-xl text-green-100 max-w-2xl mx-auto">
-              Quality supplements scientifically formulated to help you achieve your fitness goals
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Quality supplements to help you achieve your fitness goals
             </p>
           </div>
           
@@ -69,7 +69,7 @@ export default function Products() {
               <Button 
                 onClick={() => setShowFilters(!showFilters)} 
                 variant="outline" 
-                className={`w-full flex justify-between items-center border-2 border-green-500 bg-black text-green-300 ${showFilters ? 'bg-green-900' : ''}`}
+                className={`w-full flex justify-between items-center border-2 border-purple-300 ${showFilters ? 'bg-purple-100' : ''}`}
               >
                 <span className="flex items-center">
                   <SlidersHorizontal className="h-4 w-4 mr-2" />
@@ -81,13 +81,13 @@ export default function Products() {
             
             {/* Sidebar Filters */}
             <div className={`md:w-1/4 ${showFilters ? 'block' : 'hidden md:block'}`}>
-              <div className="bg-black p-6 rounded-2xl shadow-xl border border-green-700 sticky top-20">
+              <div className="bg-white p-6 rounded-2xl shadow-md sticky top-20 border-2 border-purple-200">
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-4">
-                    <h2 className="font-bold text-xl text-green-400">Filters</h2>
+                    <h2 className="font-bold text-xl text-gray-800">Filters</h2>
                     <button 
                       onClick={clearFilters}
-                      className="text-sm text-green-400 hover:text-green-300 font-medium hover:underline"
+                      className="text-sm text-purple-600 hover:text-purple-800 font-medium hover:underline"
                     >
                       Clear all
                     </button>
@@ -95,21 +95,19 @@ export default function Products() {
                   
                   {/* Categories */}
                   <div className="mb-6">
-                    <h3 className="font-semibold text-lg mb-3 text-green-400">Categories</h3>
+                    <h3 className="font-semibold text-lg mb-3 text-gray-800">Categories</h3>
                     <div className="space-y-3">
                       {categories.map(category => (
                         <div key={category.id} className="flex items-center">
-                          <div 
-                            className={`w-5 h-5 rounded border ${selectedCategories.includes(category.id) ? 'bg-green-500 border-green-500' : 'border-green-300'} flex items-center justify-center cursor-pointer mr-3`}
-                            onClick={() => toggleCategory(category.id)}
-                          >
-                            {selectedCategories.includes(category.id) && 
-                              <Check className="h-3 w-3 text-black" />
-                            }
-                          </div>
+                          <Checkbox
+                            id={`category-${category.id}`}
+                            checked={selectedCategories.includes(category.id)}
+                            onCheckedChange={() => toggleCategory(category.id)}
+                            className="border-2 border-purple-300 text-purple-600"
+                          />
                           <label 
-                            onClick={() => toggleCategory(category.id)}
-                            className="text-green-100 cursor-pointer hover:text-green-400 transition-colors"
+                            htmlFor={`category-${category.id}`}
+                            className="ml-3 text-gray-700 cursor-pointer hover:text-purple-700 transition-colors"
                           >
                             {category.name}
                           </label>
@@ -120,7 +118,7 @@ export default function Products() {
                   
                   {/* Price Range */}
                   <div>
-                    <h3 className="font-semibold text-lg mb-3 text-green-400">Price Range</h3>
+                    <h3 className="font-semibold text-lg mb-3 text-gray-800">Price Range</h3>
                     <Slider
                       defaultValue={priceRange}
                       max={100}
@@ -130,8 +128,8 @@ export default function Products() {
                       className="mb-6"
                     />
                     <div className="flex justify-between text-sm font-medium">
-                      <span className="bg-green-900 px-3 py-1 rounded-lg text-green-300">${priceRange[0].toFixed(2)}</span>
-                      <span className="bg-green-900 px-3 py-1 rounded-lg text-green-300">
+                      <span className="bg-purple-100 px-3 py-1 rounded-lg text-purple-800">${priceRange[0].toFixed(2)}</span>
+                      <span className="bg-purple-100 px-3 py-1 rounded-lg text-purple-800">
                         ${priceRange[1] === 100 ? maxPrice.toFixed(2) : priceRange[1].toFixed(2)}
                       </span>
                     </div>
@@ -144,7 +142,7 @@ export default function Products() {
             <div className="md:w-3/4">
               {filteredProducts.length > 0 ? (
                 <>
-                  <p className="mb-6 text-green-100 font-medium">{filteredProducts.length} products found</p>
+                  <p className="mb-6 text-gray-600 font-medium">{filteredProducts.length} products found</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredProducts.map(product => (
                       <ProductCard key={product.id} product={product} />
@@ -152,12 +150,12 @@ export default function Products() {
                   </div>
                 </>
               ) : (
-                <div className="text-center py-16 bg-black rounded-2xl shadow-md border border-green-700">
-                  <h3 className="text-2xl font-bold mb-3 text-green-400">No products found</h3>
-                  <p className="text-green-100 mb-8">Try changing your filters or search query</p>
+                <div className="text-center py-16 bg-white rounded-2xl shadow-md">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-800">No products found</h3>
+                  <p className="text-gray-600 mb-8">Try changing your filters or search query</p>
                   <Button 
                     onClick={clearFilters}
-                    className="bg-gradient-to-r from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 border-0 text-white"
+                    className="bg-gradient-to-r from-purple-600 to-violet-800 hover:from-purple-700 hover:to-violet-900 border-0 text-white"
                   >
                     Clear all filters
                   </Button>
