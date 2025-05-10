@@ -6,7 +6,7 @@ import { products, categories } from '@/data/products';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
-import { SlidersHorizontal, X } from 'lucide-react';
+import { SlidersHorizontal, X, Check } from 'lucide-react';
 
 export default function Products() {
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -52,10 +52,10 @@ export default function Products() {
   
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-b from-purple-100 to-white text-gray-800">
+      <div className="min-h-screen bg-gradient-to-b from-green-100 to-green-50 text-gray-800">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 animate-fade-in">
+            <h1 className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-800 via-green-600 to-black animate-fade-in">
               Premium Supplements
             </h1>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
@@ -69,7 +69,7 @@ export default function Products() {
               <Button 
                 onClick={() => setShowFilters(!showFilters)} 
                 variant="outline" 
-                className={`w-full flex justify-between items-center border-2 border-purple-500 bg-white text-gray-800 ${showFilters ? 'bg-purple-100' : ''}`}
+                className={`w-full flex justify-between items-center border-2 border-green-500 bg-white text-gray-800 ${showFilters ? 'bg-green-100' : ''}`}
               >
                 <span className="flex items-center">
                   <SlidersHorizontal className="h-4 w-4 mr-2" />
@@ -81,13 +81,13 @@ export default function Products() {
             
             {/* Sidebar Filters */}
             <div className={`md:w-1/4 ${showFilters ? 'block' : 'hidden md:block'}`}>
-              <div className="bg-white p-6 rounded-2xl shadow-xl border border-purple-200 sticky top-20">
+              <div className="bg-black p-6 rounded-2xl shadow-xl border border-green-700 sticky top-20 text-white">
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-4">
-                    <h2 className="font-bold text-xl text-gray-800">Filters</h2>
+                    <h2 className="font-bold text-xl text-green-400">Filters</h2>
                     <button 
                       onClick={clearFilters}
-                      className="text-sm text-purple-600 hover:text-purple-800 font-medium hover:underline"
+                      className="text-sm text-green-400 hover:text-green-300 font-medium hover:underline"
                     >
                       Clear all
                     </button>
@@ -95,19 +95,21 @@ export default function Products() {
                   
                   {/* Categories */}
                   <div className="mb-6">
-                    <h3 className="font-semibold text-lg mb-3 text-gray-800">Categories</h3>
+                    <h3 className="font-semibold text-lg mb-3 text-green-400">Categories</h3>
                     <div className="space-y-3">
                       {categories.map(category => (
                         <div key={category.id} className="flex items-center">
-                          <Checkbox
-                            id={`category-${category.id}`}
-                            checked={selectedCategories.includes(category.id)}
-                            onCheckedChange={() => toggleCategory(category.id)}
-                            className="border-2 border-purple-300 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600"
-                          />
+                          <div 
+                            className={`w-5 h-5 rounded border ${selectedCategories.includes(category.id) ? 'bg-green-500 border-green-500' : 'border-green-300'} flex items-center justify-center cursor-pointer mr-3`}
+                            onClick={() => toggleCategory(category.id)}
+                          >
+                            {selectedCategories.includes(category.id) && 
+                              <Check className="h-4 w-4 text-white" />
+                            }
+                          </div>
                           <label 
-                            htmlFor={`category-${category.id}`}
-                            className="ml-3 text-gray-700 cursor-pointer hover:text-purple-700 transition-colors"
+                            onClick={() => toggleCategory(category.id)}
+                            className="text-gray-300 cursor-pointer hover:text-green-400 transition-colors"
                           >
                             {category.name}
                           </label>
@@ -118,7 +120,7 @@ export default function Products() {
                   
                   {/* Price Range */}
                   <div>
-                    <h3 className="font-semibold text-lg mb-3 text-gray-800">Price Range</h3>
+                    <h3 className="font-semibold text-lg mb-3 text-green-400">Price Range</h3>
                     <Slider
                       defaultValue={priceRange}
                       max={100}
@@ -128,8 +130,8 @@ export default function Products() {
                       className="mb-6"
                     />
                     <div className="flex justify-between text-sm font-medium">
-                      <span className="bg-purple-100 px-3 py-1 rounded-lg text-purple-800">${priceRange[0].toFixed(2)}</span>
-                      <span className="bg-purple-100 px-3 py-1 rounded-lg text-purple-800">
+                      <span className="bg-green-900 px-3 py-1 rounded-lg text-green-300">${priceRange[0].toFixed(2)}</span>
+                      <span className="bg-green-900 px-3 py-1 rounded-lg text-green-300">
                         ${priceRange[1] === 100 ? maxPrice.toFixed(2) : priceRange[1].toFixed(2)}
                       </span>
                     </div>
@@ -150,12 +152,12 @@ export default function Products() {
                   </div>
                 </>
               ) : (
-                <div className="text-center py-16 bg-white rounded-2xl shadow-md border border-purple-200">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-800">No products found</h3>
-                  <p className="text-gray-600 mb-8">Try changing your filters or search query</p>
+                <div className="text-center py-16 bg-black rounded-2xl shadow-md border border-green-700 text-white">
+                  <h3 className="text-2xl font-bold mb-3 text-green-400">No products found</h3>
+                  <p className="text-gray-400 mb-8">Try changing your filters or search query</p>
                   <Button 
                     onClick={clearFilters}
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-0 text-white"
+                    className="bg-gradient-to-r from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 border-0 text-white"
                   >
                     Clear all filters
                   </Button>
