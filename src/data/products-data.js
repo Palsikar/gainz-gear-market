@@ -6,7 +6,7 @@ export const products = [
     name: "Optimum Nutrition Creatine Powder",
     description: "100% pure creatine monohydrate for increased strength, power and muscle mass.",
     price: 29.99,
-    image: "/lovable-uploads/66e0a790-32be-49a5-9524-125bd1d92f3a.png",
+    image: "/lovable-uploads/007d0dff-5340-4856-b6f0-26cec1017819.png",
     category: "creatine",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 423,
@@ -27,7 +27,7 @@ export const products = [
     name: "MuscleBlaze Wrath Pre-Workout",
     description: "Advanced pre-workout formula with Creapure and NitroBlaze for explosive energy.",
     price: 39.99,
-    image: "/lovable-uploads/d6a8fe12-e801-428f-9a3a-bb41d8ab9b26.png",
+    image: "/lovable-uploads/9e2b39d9-930f-4981-a108-c49a1920b943.png",
     category: "pre-workout",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 312,
@@ -49,7 +49,7 @@ export const products = [
     name: "Caffeine Energy Boost",
     description: "Pure caffeine tablets for enhanced focus, improved energy levels and better workout performance.",
     price: 19.99,
-    image: "/lovable-uploads/35c22580-c0af-4364-96cf-b630629ad419.png",
+    image: "/lovable-uploads/a32ac457-d8d7-480e-9d18-a65b8e510d0e.png",
     category: "pre-workout",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 178,
@@ -69,7 +69,7 @@ export const products = [
     name: "AM Mass Gainer",
     description: "High-calorie formula with quality protein and complex carbs designed to help hardgainers build size and strength.",
     price: 49.99,
-    image: "/lovable-uploads/04e01e23-0d6f-45e8-a9c7-c38796ff1735.png",
+    image: "/lovable-uploads/6f2924da-17e8-4bbd-a8c0-56fe86d1003e.png",
     category: "weight-gainers",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 256,
@@ -95,7 +95,7 @@ export const products = [
     name: "Pure Nutrition Whey Protein",
     description: "Premium whey protein for maximum muscle recovery and growth with minimal carbs and fat.",
     price: 54.99,
-    image: "/lovable-uploads/ee3b1896-9d65-469c-be10-319b7e239144.png",
+    image: "/lovable-uploads/a27652df-ef56-422e-81be-b0391cbd5950.png",
     category: "protein",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 485,
@@ -121,7 +121,7 @@ export const products = [
     name: "MuscleBlaze MB-Vite Multivitamin",
     description: "Complete multivitamin with essential minerals for overall health and wellbeing.",
     price: 19.99,
-    image: "/lovable-uploads/78021c47-7cc4-4722-a1a4-26e3dc6bcff1.png",
+    image: "/lovable-uploads/67ee56ed-7050-4c59-bbc5-3de1c08cb13a.png",
     category: "vitamins",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 320,
@@ -142,7 +142,7 @@ export const products = [
     name: "Spring Valley Omega-3",
     description: "High-quality Omega-3 fish oil supplements for heart health and cognitive function.",
     price: 22.99,
-    image: "/lovable-uploads/957dc975-d32e-4499-b96c-a55c5b5e7e23.png",
+    image: "/lovable-uploads/36eb6593-ae32-43c4-924c-2e409344f897.png",
     category: "vitamins",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 275,
@@ -163,7 +163,7 @@ export const products = [
     name: "Himalaya Shilajit",
     description: "Natural energy booster and adaptogen that enhances stamina and strength.",
     price: 34.99,
-    image: "/lovable-uploads/8bda2c21-0bee-49ee-8de3-5fbf2496bde2.png",
+    image: "/lovable-uploads/a041dfcd-fba9-4889-9791-1749abc1a879.png",
     category: "vitamins",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 189,
@@ -183,7 +183,7 @@ export const products = [
     name: "CrazyBulk Trenorol",
     description: "Natural supplement for building muscle, improving strength and enhancing fat loss.",
     price: 64.99,
-    image: "/lovable-uploads/1c752c9b-a1d9-47b4-9ccf-c2dfd3804534.png",
+    image: "/lovable-uploads/4d6688c1-505a-4659-abd0-3649c2eaa835.png",
     category: "muscle-builders",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 225,
@@ -203,7 +203,7 @@ export const products = [
     name: "Nature's Velvet Multivitamin",
     description: "Herbal source of vitamins & minerals for daily nutritional support.",
     price: 18.99,
-    image: "/lovable-uploads/6da3a820-bde0-4c96-8621-30d6dca7a0f0.png",
+    image: "/lovable-uploads/81e02929-b5aa-4113-9df9-87a67b8fcedf.png",
     category: "vitamins",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 145,
@@ -223,7 +223,7 @@ export const products = [
     name: "MB BCAA Pro",
     description: "Essential branched-chain amino acids with L-Glutamine for muscle recovery and endurance.",
     price: 27.99,
-    image: "/lovable-uploads/de7c4302-6fd4-4e1c-bd09-80fd3e1cb440.png",
+    image: "/lovable-uploads/179b5b8a-8df5-4622-ad34-c3801bed1860.png",
     category: "amino-acids",
     rating: Math.floor(Math.random() * 2) + 4, // Random rating between 4-5
     reviews: 210,
