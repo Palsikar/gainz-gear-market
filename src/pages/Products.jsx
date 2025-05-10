@@ -52,13 +52,13 @@ export default function Products() {
   
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-b from-green-100 to-green-50 text-gray-800">
+      <div className="min-h-screen bg-green-900 text-white">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-800 via-green-600 to-black animate-fade-in">
+            <h1 className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-green-100 to-white animate-fade-in">
               Premium Supplements
             </h1>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+            <p className="text-xl text-green-100 max-w-2xl mx-auto">
               Quality supplements scientifically formulated to help you achieve your fitness goals
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function Products() {
               <Button 
                 onClick={() => setShowFilters(!showFilters)} 
                 variant="outline" 
-                className={`w-full flex justify-between items-center border-2 border-green-500 bg-white text-gray-800 ${showFilters ? 'bg-green-100' : ''}`}
+                className={`w-full flex justify-between items-center border-2 border-green-500 bg-black text-green-300 ${showFilters ? 'bg-green-900' : ''}`}
               >
                 <span className="flex items-center">
                   <SlidersHorizontal className="h-4 w-4 mr-2" />
@@ -81,7 +81,7 @@ export default function Products() {
             
             {/* Sidebar Filters */}
             <div className={`md:w-1/4 ${showFilters ? 'block' : 'hidden md:block'}`}>
-              <div className="bg-black p-6 rounded-2xl shadow-xl border border-green-700 sticky top-20 text-white">
+              <div className="bg-black p-6 rounded-2xl shadow-xl border border-green-700 sticky top-20">
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="font-bold text-xl text-green-400">Filters</h2>
@@ -104,12 +104,12 @@ export default function Products() {
                             onClick={() => toggleCategory(category.id)}
                           >
                             {selectedCategories.includes(category.id) && 
-                              <Check className="h-4 w-4 text-white" />
+                              <Check className="h-3 w-3 text-black" />
                             }
                           </div>
                           <label 
                             onClick={() => toggleCategory(category.id)}
-                            className="text-gray-300 cursor-pointer hover:text-green-400 transition-colors"
+                            className="text-green-100 cursor-pointer hover:text-green-400 transition-colors"
                           >
                             {category.name}
                           </label>
@@ -144,7 +144,7 @@ export default function Products() {
             <div className="md:w-3/4">
               {filteredProducts.length > 0 ? (
                 <>
-                  <p className="mb-6 text-gray-700 font-medium">{filteredProducts.length} products found</p>
+                  <p className="mb-6 text-green-100 font-medium">{filteredProducts.length} products found</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredProducts.map(product => (
                       <ProductCard key={product.id} product={product} />
@@ -152,9 +152,9 @@ export default function Products() {
                   </div>
                 </>
               ) : (
-                <div className="text-center py-16 bg-black rounded-2xl shadow-md border border-green-700 text-white">
+                <div className="text-center py-16 bg-black rounded-2xl shadow-md border border-green-700">
                   <h3 className="text-2xl font-bold mb-3 text-green-400">No products found</h3>
-                  <p className="text-gray-400 mb-8">Try changing your filters or search query</p>
+                  <p className="text-green-100 mb-8">Try changing your filters or search query</p>
                   <Button 
                     onClick={clearFilters}
                     className="bg-gradient-to-r from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 border-0 text-white"
