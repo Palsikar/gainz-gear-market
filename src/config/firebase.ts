@@ -4,7 +4,7 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAxe_0HnUbgET2zf3w0uvjxyisWU5rIi_E",
+  apiKey: "your web api key here",
   authDomain: "gainzgear-app.firebaseapp.com",
   projectId: "gainzgear-app",
   storageBucket: "gainzgear-app.appspot.com",
