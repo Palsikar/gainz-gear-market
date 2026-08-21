@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import ShoppingAssistant from '../ShoppingAssistant';
 
 export default function Layout({ children }) {
   return (
@@ -11,6 +12,7 @@ export default function Layout({ children }) {
         {children}
       </main>
       <Footer />
+      <ShoppingAssistant />
     </div>
   );
 }
